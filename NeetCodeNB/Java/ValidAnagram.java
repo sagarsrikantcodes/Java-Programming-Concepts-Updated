@@ -67,6 +67,8 @@ public class ValidAnagram {
         // System.out.println(validAnagram(s2, t2));
         // System.out.println(validAnagramOpt(s1, t1));
         // System.out.println(validAnagramOpt(s2, t2));
+        System.out.println(validAnagramOpt2(s1, t1));
+        System.out.println(validAnagramOpt2(s2, t2));
     }
 
     public static boolean validAnagramOpt(String str1, String str2) {
@@ -115,4 +117,38 @@ public class ValidAnagram {
         return true;
     }
 
+    /*
+    Manual Hash Method
+    - create a array of count1 and count2 with a length of 25
+    - iterate through the first string input
+       - call populateCount (count1,char)
+       - call populateCount (count2, char)
+    - check if count1 and count2 is has the same key value pairs, if so
+        - return true
+    - return false
+        
+    - define populateCount(count, char)
+        - get the index value of count1 array by getting the difference of the current char  and 'a'
+        - increment the value at index of difference
+     */
+
+     public static boolean validAnagramOpt2(String str1, String str2) {
+        int[] count1 = new int[25];
+        int[] count2 = new int[25];
+        
+        populateCount(count1, str1);
+        populateCount(count2, str2);
+     
+        System.out.println(Arrays.toString(count1));
+        System.out.println(Arrays.toString(count2));
+   
+        return Arrays.equals(count2, count1);
+  
+     }
+
+     public static void populateCount(int[] count, String str) {
+        for (int i = 0; i < str.length(); i++) {
+            count[str.charAt(i) - 'a']++;
+        }       
+     }
 }

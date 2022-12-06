@@ -53,7 +53,7 @@ function removeElement(arr, target) {
 }
 
 console.log(removeElement([3,2,2,3],3));
-console.log(removeElement([0,1,2,2,3,0,4,2],2)); 
+console.log(removeElement([0,1,2,2,3,2,4,2],2)); 
 /*
 i = 0
 at j = 0, 0 != 2, i = 0
@@ -73,6 +73,7 @@ i = 5
 at j = 7, 2 != 2  skip
 
 0, 1, 3, 0, 4, 0, 4, 2
+0, 1, 3, 4, 3, 2, 4, 2
 
 
 

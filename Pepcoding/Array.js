@@ -58,15 +58,15 @@ Algo
 - return str
 */
 
-function decimalToBase(d, b) {
-    let str = "";
-    while (d > 0) {
-        // console.log(d, "%", b);
-        str = (d % b) + str;
-        d = Math.floor(d / b);
-    }
-    return str;
-}
+// function decimalToBase(d, b) {
+//     let str = "";
+//     while (d > 0) {
+//         // console.log(d, "%", b);
+//         str = (d % b) + str;
+//         d = Math.floor(d / b);
+//     }
+//     return str;
+// }
 
 // console.log(decimalToBase(57, 2));
 
@@ -95,18 +95,18 @@ Aglo
 - return decimal
 */
 
-function baseToDecimal(n, b) {
-    let exponent = 0;
-    let decimal = 0;
-    while (n > 0) {
-        let digit = n % 10;
-        n = Math.floor(n / 10);
-        let value = digit * b ** exponent;
-        decimal += value;
-        exponent += 1;
-    }
-    return decimal;
-}
+// function baseToDecimal(n, b) {
+//     let exponent = 0;
+//     let decimal = 0;
+//     while (n > 0) {
+//         let digit = n % 10;
+//         n = Math.floor(n / 10);
+//         let value = digit * b ** exponent;
+//         decimal += value;
+//         exponent += 1;
+//     }
+//     return decimal;
+// }
 
 // console.log(baseToDecimal(111001, 2));
 /*
@@ -183,29 +183,29 @@ Algo
 - return value
 5, 4210, 1220
 */
-function baseAddition(b, num1, num2) {
-    let value = 0;
-    let carry = 0;
-    let e = 0;
-    while (num1 > 0 || num2 > 0) {
-        let digit1 = num1 % 10;
-        let digit2 = num2 % 10;
-        // console.log(digit1, digit2);
-        num1 = Math.floor(num1 / 10);
-        num2 = Math.floor(num2 / 10);
-        let sum = digit1 + digit2 + carry;
-        carry = Math.floor(sum / b);
-        let curVal = sum % b;
-        // console.log("curVal", curVal);
-        value += curVal * 10 ** e;
-        e += 1;
-    }
-    if (carry > 0) {
-        value += carry * 10 ** e;
-    }
-    //console.log("val", value);
-    return value;
-}
+// function baseAddition(b, num1, num2) {
+//     let value = 0;
+//     let carry = 0;
+//     let e = 0;
+//     while (num1 > 0 || num2 > 0) {
+//         let digit1 = num1 % 10;
+//         let digit2 = num2 % 10;
+//         // console.log(digit1, digit2);
+//         num1 = Math.floor(num1 / 10);
+//         num2 = Math.floor(num2 / 10);
+//         let sum = digit1 + digit2 + carry;
+//         carry = Math.floor(sum / b);
+//         let curVal = sum % b;
+//         // console.log("curVal", curVal);
+//         value += curVal * 10 ** e;
+//         e += 1;
+//     }
+//     if (carry > 0) {
+//         value += carry * 10 ** e;
+//     }
+//     //console.log("val", value);
+//     return value;
+// }
 
 // console.log(baseAddition(2, 11011, 1111));
 
@@ -281,44 +281,43 @@ while num2 is greater than 0
 3 + 20 = 23 % 8 =7
 */
 
-function baseMultiplication(b, n1, n2) {
-    let value = 0;
-    let ee = 0;
-    while (n2 > 0) {
-        // let d2 = n2 % 10;
-        let d2 = (n2 % 10) * b ** ee;
-        console.log("ee:", ee);
-        ee += 1;
-        n2 = Math.floor(n2 / 10);
-        let c = 0;
-        let curVal = 0;
-        let e = 0;
-        //console.log("n2", n2, "d2", d2);
-        n1c = n1;
-        while (n1c > 0) {
-            let d1 = n1c % 10;
-            //console.log("d1", d1);
-            n1c = Math.floor(n1c / 10);
+// function baseMultiplication(b, n1, n2) {
+//     let value = 0;
+//     let ee = 0;
+//     while (n2 > 0) {
+//         // let d2 = n2 % 10;
+//         let d2 = n2 % 10;
+//         n2 = Math.floor(n2 / 10);
+//         let c = 0;
+//         let curVal = 0;
+//         let e = 0;
+//         //console.log("n2", n2, "d2", d2);
+//         n1c = n1;
+//         while (n1c > 0) {
+//             let d1 = n1c % 10;
+//             //console.log("d1", d1);
+//             n1c = Math.floor(n1c / 10);
 
-            let mult = d1 * d2 + c;
-            // console.log(d1, "*", d2, "+", c, mult);
-            //console.log("mult", mult, "%", b, mult % b);
-            curVal += (mult % b) * 10 ** e;
-            // console.log("curDig", curVal);
-            //console.log("curVal", curVal);
-            c = Math.floor(mult / b);
-            // console.log("C:", c);
-            e += 1;
-        }
-        if (c > 0) {
-            curVal += c * 10 ** e;
-        }
-        console.log("curVal", curVal);
-        value = baseAddition(b, value, curVal);
-        console.log("value", value);
-    }
-    return value;
-}
+//             let mult = d1 * d2 + c;
+//             // console.log(d1, "*", d2, "+", c, mult);
+//             //console.log("mult", mult, "%", b, mult % b);
+//             curVal += (mult % b) * 10 ** e;
+//             // console.log("curDig", curVal);
+//             //console.log("curVal", curVal);
+//             c = Math.floor(mult / b);
+//             // console.log("C:", c);
+//             e += 1;
+//         }
+//         if (c > 0) {
+//             curVal += c * 10 ** e;
+//         }
+//         console.log("curVal", curVal);
+//         value = baseAddition(b, value, curVal * 10 ** ee);
+//         ee += 1;
+//         console.log("value", value);
+//     }
+//     return value;
+// }
 
 /*
 1220
@@ -332,4 +331,529 @@ function baseMultiplication(b, n1, n2) {
 4210
 */
 // console.log(baseAddition(8, 2156, 74));
-console.log(baseMultiplication(8, 2156, 743));
+// console.log(baseMultiplication(8, 2156, 74));
+/*
+Problem
+- input: array of numbers
+- output: number (span)
+
+span - the difference between the min and max value of the numbers in the input array
+
+example
+6
+15
+30
+40
+4
+11
+9
+
+output: 40 - 4 = 36
+Data Structure
+array => number (span)
+Algo 
+init largestNum to min value
+inti smallestNum of max value
+- iterate through the array
+    - if current number is smaller than smallestNum
+        - reassign smallestNum to current numnber
+    - if current number is larger then largestNum
+        - reassign largestNum to current number
+- return largestNum minus smallestNum
+*/
+
+// function spanOfArray(arr) {
+//     let largestNum = Number.MIN_VALUE;
+//     let smallestNum = Number.MAX_VALUE;
+//     for (let idx = 0; idx < arr.length; idx += 1) {
+//         if (arr[idx] < smallestNum) {
+//             smallestNum = arr[idx];
+//         }
+//         if (arr[idx] > largestNum) {
+//             largestNum = arr[idx];
+//         }
+//     }
+//     return largestNum - smallestNum;
+// }
+
+// console.log(spanOfArray([15, 30, 40, 11, 9]));
+
+/*
+Algo: 
+- iterate through the array of numbers
+    - if the current number is equal to target 
+        - return the index 
+- return -1
+*/
+// function findElement(arr, target) {
+//     for (let idx = 0; idx < arr.length; idx += 1) {
+//         if (arr[idx] === target) {
+//             return idx;
+//         }
+//     }
+//     return -1;
+// }
+
+// console.log(findElement([15, 30, 40, 4, 11, 9], 400));
+
+/*
+input: array of number (number represent the number of stars in the bar)
+output: pring the number of stars for each bar
+
+example
+[3, 1, 0, 7, 5]
+			*		
+			*		
+			*	*	
+			*	*	
+*			*	*	
+*			*	*	
+*	*		*	*
+
+
+Data structure
+array of numbers => print the number of star at index
+
+Algo
+- iterate through each row starting at the largest value in the array to 1
+    - init str to empty string
+    - iterate through the col starting at 1 to the larget value
+        - if row is less than or equal to the col value
+            - append a star to str
+        - else
+            - append a space to str
+    - print str
+*/
+// function barChart(arr) {
+//     let rows = Number.MIN_VALUE;
+//     for (let idx = 0; idx < arr.length; idx += 1) {
+//         if (arr[idx] > rows) {
+//             rows = arr[idx];
+//         }
+//     }
+//     // console.log(rows);
+//     for (let row = rows; row >= 1; row -= 1) {
+//         let str = "";
+//         for (let col = 0; col < arr.length; col += 1) {
+//             //console.log(row, '<=', arr[col]);
+//             if (row <= arr[col]) {
+//                 //7 <= arr[0] = 3
+//                 str += "*\t";
+//             } else {
+//                 str += "-\t";
+//             }
+//         }
+//         console.log(str);
+//     }
+// }
+// barChart([3, 1, 0, 7, 5]);
+
+/*
+Algo
+- append the shorter array with 0s at the start to match the length of the other array
+
+init result  to 0
+init e to 0
+init c to 0
+- iterate starting at the end of the arrays until the end of either arrays
+    - init sum to the sum of d1, d2 and carry
+    - reassign result to the remainder of sum divided by 10 times the weighted place value plus the current result
+    - init carry to the sum divided by 10 rounded down
+    - increment e by 1
+    - if c is greater than 0
+        - reassign result to c times the 10 to e
+- return result
+*/
+// function sumOfTwoArrays(arr1, arr2) {
+//     let result = 0;
+//     let e = 0;
+//     let c = 0;
+//     let maxLength = Math.max(arr1.length, arr2.length);
+//     let minLength = Math.min(arr1.length, arr2.length);
+
+//     let diff = maxLength - minLength;
+
+//     for (let count = 1; count <= diff; count += 1) {
+//         if (arr1.length === minLength) {
+//             arr1.unshift(0);
+//         } else {
+//             arr2.unshift(0);
+//         }
+//     }
+//     console.log(arr1, arr2);
+//     for (let idx = arr1.length - 1; idx >= 0; idx -= 1) {
+//         let sum = arr1[idx] + arr2[idx] + c;
+//         console.log(arr1[idx], "+", arr2[idx], "+", c, sum);
+//         result += (sum % 10) * 10 ** e;
+//         console.log(result);
+//         c = Math.floor(sum / 10);
+//         e += 1;
+//         if (c > 0) {
+//             result += c * 10 ** e;
+//         }
+//     }
+//     return result;
+// }
+
+// console.log(sumOfTwoArrays([3, 1, 0, 7, 5], [1, 1, 1, 1, 1, 1]));
+
+// function diffOfTwoArrays(arr1, arr2) {
+//     let result = 0;
+//     let e = 0;
+//     let c = 0;
+//     let barrow = 0;
+//     let d1;
+//     let d2;
+
+//     let diff = arr2.length - arr1.length;
+//     for (let count = 1; count <= diff; count += 1) {
+//         arr1.unshift(0);
+//     }
+
+//     for (let idx = arr1.length - 1; idx >= 0; idx -= 1) {
+//         d1 = arr1[idx];
+//         d2 = arr2[idx];
+//         if (d2 - barrow < d1) {
+//             c = Math.ceil(d2 + d1 / 10);
+//             let diff = c * 10 - barrow + d2 - d1;
+//             result = result + (diff % 10) * 10 ** e;
+//             barrow = c;
+//             e += 1;
+//         } else {
+//             let diff = d2 - barrow - d1;
+//             result += (diff % 10) * 10 ** e;
+//         }
+//     }
+//     if (barrow - d2 > 0) {
+//         result += c * 10 ** e;
+//     }
+//     return result;
+// }
+
+// console.log(diffOfTwoArrays([2, 6, 7], [1, 0, 0, 0]));
+/*
+input: array 
+output: array with the elements reversed in place
+
+example
+[1,2,3,4,5]
+[5,4,3,2,1]
+
+data structure
+array of numbers => reversed array mutated
+
+Algo:
+- int mid to half the length of the input array rounded down
+- iterate through the input array starting at idx equals to 0 then to mid
+  - swap the current number with the recipical position of the number at the end of the input array
+- return the input array
+*/
+
+// function reverseArray(arr) {
+//     let mid = Math.floor(arr.length / 2); // 1,2,3,4,5
+//     for (let idx = 0; idx < mid; idx += 1) {
+//         let temp = arr[idx];
+//         arr[idx] = arr[arr.length - 1 - idx];
+//         arr[arr.length - 1 - idx] = temp;
+//     }
+//     return arr;
+// }
+
+// console.log(reverseArray([1, 3, 3, 4, 5, 7]));
+
+/*
+Problem
+input: array of numbers, number (times to the right for positive values and times to the left for negative values)
+output: array of numbers rotated in place
+
+Example
+[1,2,3,4,5,6]
+k = 3 (rotate 3 times to the right)
+ 3, 4, 5, 1 , 2   
+  4, 5, 6, 1, 2, 3
+
+ [1,2,3,4,5,]
+k = -3 (rotate 3 times to the right)
+ 4, 5, 1, 2, 3  
+
+ Data Structure
+
+ Algo
+ - if positive k
+  - get the last k number of elements from the input array and set them to the beginning of the array
+  - get the remainding array and set to the end of the input array
+- else
+  - geth the first k number of elements from th input array and set them to the end fo the input array
+  - get the remainding array and set to the beginning fo the input array
+- return the array
+*/
+
+/*
+- get the rotation number
+- get the remainder of k divided by array length
+     - if remainder is less than 0 
+         reassign remainder to remainder minus array length
+- init mid1 to remainder divided by 2 rounded down
+- iterate through array starting at 1 to mid1  - 1
+    - swap first and last
+init mdi2 to array length -1 - remainder + 1 divided by 2  rounded down
+- iterate through array starting at remainder + 1 to mid2 
+    - swap
+iterate through array array 
+    - swap first and last element
+-return array
+*/
+// function rotate(arr, k) {
+//     let remainder = k % arr.length;
+//     if (remainder < 0) {
+//         remainder = remainder + arr.length;
+//     }
+//     console.log(remainder);
+//     let mid1 = Math.floor(remainder / 2) - 1;
+//     reverseArray(arr, 0, mid1, remainder);
+//     let mid2 = remainder + Math.floor((arr.length - 1 - remainder) / 2);
+//     console.log("mid2", mid2);
+//     reverseArray(arr, remainder + 1, mid2, remainder); ///1, 2, 3, 4, 5 32154
+//     reverseArray1(arr);
+//     return arr;
+// }
+// function reverseArray(arr, start, mid, remainder) {
+//     //let mid = Math.floor(arr.length / 2); // 1,2,3,4,5
+//     console.log("here");
+//     let d = 0;
+//     let mid1 = Math.floor(remainder / 2) - 1;
+//     for (let idx = start; idx <= mid; idx += 1) {
+//         let temp = arr[idx];
+//         console.log("temp", temp);
+//         if (idx <= mid1) {
+//             arr[idx] = arr[remainder - idx]; //4 - 3 arr[1]
+//             arr[remainder - idx] = temp;
+//         } else {
+//             arr[idx] = arr[arr.length - (1 + d)];
+//             arr[arr.length - (1 + d)] = temp;
+//             d += 1;
+//         }
+//         console.log(arr);
+//     }
+// }
+
+// function reverseArray1(arr) {
+//     let mid = Math.floor(arr.length / 2); // 1,2,3,4,5
+//     for (let idx = 0; idx < mid; idx += 1) {
+//         let temp = arr[idx];
+//         arr[idx] = arr[arr.length - 1 - idx];
+//         arr[arr.length - 1 - idx] = temp;
+//     }
+//     return arr;
+// }
+// console.log(rotate([1, 2, 3, 4, 5], -3));
+
+/*
+Problem 
+input: array of numbers
+output: new array with values of input array as index and index as value
+
+Example
+[4,0,2,3,1] => [1, 4, 2, 3, 0]
+
+Data Structure
+array => new array with inverse index and values
+
+Algo
+init a new array to an empty array
+- iterate through the array of numbers
+    - assign the current index value to the new array at position of the current value
+- return the new array
+*/
+// function inverseArr(arr) {
+//     let result = [];
+//     for (let idx = 0; idx < arr.length; idx += 1) {
+//         result[arr[idx]] = idx;
+//     }
+//     return result;
+// }
+// console.log(inverseArr([4, 0, 2, 3, 1]));
+
+/*
+Problem
+input: array of numbers
+output: print all possible sub arrays
+
+example
+[10, 20, 30]
+iteration 1 
+[10]
+[10, 20]
+[10, 20 , 30]
+iteration 2
+[20]
+[20, 30]
+interation 3
+[30]
+ 
+Data Structure 
+array of numbers => print all possible sub arrays
+
+Algo
+- iterate through the array of numbers (num1)
+    - init sub to an empty array
+    - iterate through the array of numbers (num2) to the current num1 
+        - push the current num2 to sub
+    - print sub 
+*/
+// function subArray(arr) {
+//     for (let num1Idx = 0; num1Idx < arr.length; num1Idx += 1) {
+//         //10
+//         for (let num3Idx = num1Idx; num3Idx < arr.length; num3Idx += 1) {
+//             //10
+//             let sub = [];
+//             for (let num2Idx = num1Idx; num2Idx <= num3Idx; num2Idx += 1) {
+//                 sub.push(arr[num2Idx]);
+//             }
+//             console.log(sub);
+//         }
+//     }
+// }
+// subArray([10, 20, 30]);
+
+/*
+binary search
+input: array, number
+output: index if found else return -1
+
+example
+10, 20, 30, 40, 50, 60, 70, 80, 90, 100 find 70
+Algo
+- init lo at 0
+- init hi to length of array
+- while low is less or equal to hi
+    - init mid to hi - lo divided by 2 rounded down
+    - if mid is not equal to target number
+        - if mid value is less than target number
+            - reassign lo to mid + 1
+        - else 
+            - reassign hi to mid - 1
+    - else 
+        - return mid 
+- return -1  
+*/
+
+function binarySearch(arr, target) {
+    let lo = 0;
+    let hi = arr.length - 1;
+    while (lo <= hi) {
+        // console.log(lo, hi);
+        let mid = Math.floor(lo + (hi - lo) / 2);
+        if (arr[mid] !== target) {
+            if (arr[mid] < target) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        } else {
+            return mid;
+        }
+    }
+    return -1;
+}
+
+// console.log(binarySearch([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 70));
+
+/*
+example
+[5, 10, 15, 22, 33, 40, 42, 55], 25
+0, 7
+4, 7
+4,4
+
+algo:
+
+call binary search 
+    - if no target is found
+        -if the lo and hi value is greater than the target value 
+            - get the prevous value
+        - else
+            - get the next value
+
+*/
+// function brokenEconomy(arr, target) {
+//     let lo = 0;
+//     let hi = arr.length - 1;
+//     while (lo <= hi) {
+//         //console.log(lo, hi);
+//         let mid = Math.floor(lo + (hi - lo) / 2);
+//         if (arr[mid] !== target) {
+//             if (arr[mid] < target) {
+//                 lo = mid + 1;
+//             } else {
+//                 hi = mid - 1;
+//             }
+//         } else {
+//             return target + " is available";
+//         }
+//     }
+//     if (arr[lo] < target) {
+//         return [arr[lo], arr[lo + 1]];
+//     }
+//     return [arr[lo - 1], arr[lo]];
+// }
+// console.log(brokenEconomy([5, 10, 15, 22, 33, 40, 42, 55], 25));
+
+// console.log(brokenEconomy([7, 14, 18, 25, 30], 18));
+// console.log(brokenEconomy([1, 5, 10, 15, 22, 33, 40, 42, 55, 66], 34));
+
+/*
+find the index of the target
+create a pointer1 starting at the target
+create a pointer2 starting at the target
+while either is value is equal to target
+    if previous value at pointer1 is equal to target
+        decrement pointer by 1
+    if next value at pointer2 is equal to target 
+        increment pointer by 1
+return pointer1 and pointer2    
+*/
+// function firstLastIndex(arr, target) {
+//     let indexTarget = binarySearch(arr, target);
+//     let pt1Idx = indexTarget;
+//     let pt2Idx = indexTarget;
+//     console.log(indexTarget);
+//     while (arr[pt1Idx - 1] === target || arr[pt2Idx + 1] === target) {
+//         if (arr[pt1Idx - 1] === target) {
+//             pt1Idx -= 1;
+//         }
+//         if (arr[pt2Idx + 1] === target) {
+//             pt2Idx += 1;
+//         }
+//     }
+//     return [pt1Idx, pt2Idx];
+// }
+// console.log(
+//     firstLastIndex(
+//         [1, 5, 10, 15, 22, 33, 33, 33, 33, 33, 40, 42, 55, 66, 77],
+//         33
+//     )
+// );
+function barChart(arr) {
+    let rows = Number.MIN_VALUE;
+    for (let idx = 0; idx < arr.length; idx += 1) {
+        if (arr[idx] > rows) {
+            rows = arr[idx];
+        }
+    }
+    // console.log(rows);
+    for (let row = 1; row <= rows; row += 1) {
+        let str = "";
+        for (let col = 0; col < arr.length; col += 1) {
+            //console.log(row, '<=', arr[col]);
+            if (row <= arr[col]) {
+                //1<= arr[0] = 3
+                str += "*\t";
+            } else {
+                str += "-\t";
+            }
+        }
+        console.log(str);
+    }
+}
+barChart([3, 1, 0, 7, 5]);

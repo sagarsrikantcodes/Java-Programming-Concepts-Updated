@@ -738,24 +738,24 @@ Algo
 - return -1  
 */
 
-function binarySearch(arr, target) {
-    let lo = 0;
-    let hi = arr.length - 1;
-    while (lo <= hi) {
-        // console.log(lo, hi);
-        let mid = Math.floor(lo + (hi - lo) / 2);
-        if (arr[mid] !== target) {
-            if (arr[mid] < target) {
-                lo = mid + 1;
-            } else {
-                hi = mid - 1;
-            }
-        } else {
-            return mid;
-        }
-    }
-    return -1;
-}
+// function binarySearch(arr, target) {
+//     let lo = 0;
+//     let hi = arr.length - 1;
+//     while (lo <= hi) {
+//         // console.log(lo, hi);
+//         let mid = Math.floor(lo + (hi - lo) / 2);
+//         if (arr[mid] !== target) {
+//             if (arr[mid] < target) {
+//                 lo = mid + 1;
+//             } else {
+//                 hi = mid - 1;
+//             }
+//         } else {
+//             return mid;
+//         }
+//     }
+//     return -1;
+// }
 
 // console.log(binarySearch([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 70));
 
@@ -834,26 +834,380 @@ return pointer1 and pointer2
 //         33
 //     )
 // );
-function barChart(arr) {
-    let rows = Number.MIN_VALUE;
-    for (let idx = 0; idx < arr.length; idx += 1) {
-        if (arr[idx] > rows) {
-            rows = arr[idx];
-        }
-    }
-    // console.log(rows);
-    for (let row = 1; row <= rows; row += 1) {
-        let str = "";
-        for (let col = 0; col < arr.length; col += 1) {
-            //console.log(row, '<=', arr[col]);
-            if (row <= arr[col]) {
-                //1<= arr[0] = 3
-                str += "*\t";
-            } else {
-                str += "-\t";
+// function barChart(arr) {
+//     let rows = Number.MIN_VALUE;
+//     for (let idx = 0; idx < arr.length; idx += 1) {
+//         if (arr[idx] > rows) {
+//             rows = arr[idx];
+//         }
+//     }
+//     // console.log(rows);
+//     for (let row = 1; row <= rows; row += 1) {
+//         let str = "";
+//         for (let col = 0; col < arr.length; col += 1) {
+//             //console.log(row, '<=', arr[col]);
+//             if (row <= arr[col]) {
+//                 //1<= arr[0] = 3
+//                 str += "*\t";
+//             } else {
+//                 str += "-\t";
+//             }
+//         }
+//         console.log(str);
+//     }
+// }
+// barChart([3, 1, 0, 7, 5]);
+
+/*
+input: n - number of rows
+       m - number of columns
+output: print out the contents of the array
+
+Algo
+- iterate through the number of rows
+    - iterate through the number of columns
+        - print rhe number at row and col
+*/
+// function print2DArray(arr) {
+//     for (let row = 0; row < arr.length; row += 1) {
+//         for (let col = 0; col < arr[row].length; col += 1) {
+//             console.log(arr[row][col]);
+//         }
+//     }
+// }
+// print2DArray([
+//     [11, 12, 13, 14],
+//     [21, 22, 23, 24],
+// ]);
+
+//10, 0, 0,  +
+//0, 0, 0,  +
+//10, 0, 0, +
+//0, 0, 0
+
+// 0, 0 ,0 +
+// 0, 20, 20 +
+// 0, 0, 0 +
+// 0, 40, 0
+
+// [10,0,10,0]
+// [0, 40, 0, 40]
+
+/*
+Algo 
+-  if the number of cols in the first array equal to the number of rows in the second array
+    - init result to empty array
+    - iterate n1 number of times
+    - init sub
+      - iterate m2 number of times
+      - init sum to 0
+        - iterate m1 number of times
+      - add m1 + m2 to sum
+      - add sum to sub 
+    - add sub to result
+- return result
+- else 
+    - return string 'invalid'
+*/
+// function matrixMultiplication(arr1, arr2) {
+//     const result = [];
+//     for (let row1 = 0; row1 < arr1.length; row1 += 1) {
+//         const sub = [];
+//         for (let col2 = 0; col2 < arr2[0].length; col2 += 1) {
+//             let sum = 0;
+//             for (let col1 = 0; col1 < arr1[0].length; col1 += 1) {
+//                 sum += arr1[row1][col1] * arr2[col1][col2];
+//             }
+//             sub.push(sum);
+//         }
+//         result.push(sub);
+//     }
+//     return result.toString();
+// }
+
+// console.log(
+//     matrixMultiplication(
+//         [
+//             [10, 0, 0],
+//             [0, 20, 0],
+//         ],
+//         [
+//             [1, 0, 1, 0],
+//             [0, 1, 1, 2],
+//             [1, 1, 0, 0],
+//         ]
+//     )
+// );
+/*
+0,0, 1,0, 2,0
+0,1, 1,1, 2,1
+0,2, 1,2, 2,2
+Algo
+- iterate through each col 0 , 1...
+    - iterate through each row 0,0, 1,0, 2,0..
+        - print the element at row and col
+index: 0, 1, 2 => even, odd, even => 0, 2, 0
+*/
+// function stateOfWakanda(arr) {
+//     for (let col = 0; col < arr[0].length; col += 1) {
+//         if (col % 2 === 0) {
+//             for (let row = 0; row <= arr.length - 1; row += 1) {
+//                 console.log(arr[row][col]);
+//             }
+//         } else {
+//             for (let row = arr.length - 1; row >= 0; row -= 1) {
+//                 console.log(arr[row][col]);
+//             }
+//         }
+//     }
+// }
+// console.log(
+//     stateOfWakanda([
+//         [1, 2, 3],
+//         [4, 5, 6],
+//         [7, 8, 9],
+//     ])
+// );
+
+/*
+[   [11,12,13,14,15]
+    [21,22,23,24,25]
+    [31,32,33,34,35]
+    - on each iteration going down, down one less row  until there is no more rows to transverse
+]
+*/
+function printSpiral(arr) {
+    let total = arr.length * arr[0].length;
+    let curTotal = 0;
+    let col1End = arr.length;
+    let row1 = 0;
+    let col1 = 0;
+    let row2 = arr.length - 1;
+    let col3 = arr[0].length - 1;
+    let row3 = arr.length - 1;
+    let row3End = 0;
+    let row4 = 0;
+    let stop = false;
+
+    while (curTotal < total) {
+        for (let col = col1; col < col1 + 1; col += 1) {
+            for (let row = row1; row < col1End; row += 1) {
+                console.log(arr[row][col]);
+                curTotal += 1;
+                // console.log("curTotal C1:", curTotal);
+                if (curTotal === total) {
+                    return;
+                }
             }
         }
-        console.log(str);
+        col1End -= 1;
+        row1 += 1;
+        col1 += 1;
+
+        for (let row = row2; row > row2 - 1; row -= 1) {
+            for (let col = col1; col <= arr[row].length - 1 - col1; col += 1) {
+                console.log(arr[row][col]);
+                curTotal += 1;
+                //console.log("curTotal R2:", curTotal);
+                if (curTotal === total) {
+                    return;
+                }
+            }
+        }
+        row2 -= 1;
+
+        for (let col = col3; col > col3 - 1; col -= 1) {
+            for (let row = row3; row >= row3End; row -= 1) {
+                console.log(arr[row][col]);
+                curTotal += 1;
+                //console.log("curTotal C3:", curTotal);
+                if (curTotal === total) {
+                    return;
+                }
+            }
+        }
+        col3 -= 1;
+        row3 -= 1;
+        row3End += 1;
+
+        for (let row = row4; row < row4 + 1; row += 1) {
+            for (let col = col3; col >= col1; col -= 1) {
+                console.log(arr[row][col]);
+                curTotal += 1;
+                if (curTotal === total) {
+                    return;
+                }
+            }
+        }
+        row4 += 1;
     }
 }
-barChart([3, 1, 0, 7, 5]);
+
+// console.log(
+//     printSpiral([
+//         [11, 12, 13, 14, 15],
+//         [21, 22, 23, 24, 25],
+//         [31, 32, 33, 34, 35],
+//         [21, 22, 23, 24, 25],
+//     ])
+// );
+
+/*
+/ define rotation direction
+    - if the remainder of count divided by 4 is equal to 
+        0 % 4 = 0 => East increment col by 1 and
+        1 % 4 = 1 => south increment row by 1
+        2 % 4 = 2 => west decrement col by 1 
+        3 % 4 = 3 => north decrement row by 1
+    
+
+start of with east => increment col by 1
+turn 90 (south) => increment row by 1
+turn 90 (west) => decrement col by 1
+turn 90 (north) => decrement row by 1
+east = 0 
+south = 1
+west = 2
+north = 3
+
+- init count to 0;
+- init position at row = 0 , col = 0
+    - if col undefined
+        - return the position of row and col
+    - else if value is equal to 1
+        - increment count by 1
+        - call move 
+    - else if row is undefined
+        - return the position of row and col
+    - else 
+        - call move
+*/
+let count = 0;
+let row = 0;
+let col = 0;
+function endPointMatrix(arr) {
+    while (arr[row][col] !== undefined || arr[row][col] !== undefined) {
+        if (arr[row][col] === 1) {
+            count += 1;
+        }
+        move();
+        console.log("row:", row, "col:", col);
+    }
+    if (row === undefined) {
+        return [row - 1, col];
+    } else {
+        return [row, col - 1];
+    }
+}
+
+function move() {
+    if (count % 4 === 0) {
+        col += 1;
+    } else if (count % 4 === 1) {
+        row += 1;
+    } else if (count % 4 === 2) {
+        col -= 1;
+    } else if (count % 4 === 3) {
+        row -= 1;
+    }
+}
+// console.log(
+//     endPointMatrix([
+//         [0, 0, 1, 0],
+//         [1, 0, 0, 0],
+//         [0, 0, 0, 0],
+//         [1, 0, 1, 0],
+//     ])
+// );
+
+/*
+how to rotate a matrix 90 degrees
+how to tranverse diagonally 
+- start of the next row starts at the row index
+
+*/
+function rotate90(arr) {
+    for (let row = 0; row < arr.length; row += 1) {
+        for (let col = row; col < arr.length; col += 1) {
+            //console.log(arr[row][col]);
+            let temp = arr[row][col];
+            arr[row][col] = arr[col][row];
+            arr[col][row] = temp;
+        }
+    }
+    for (let r = 0; r < arr.length; r++) {
+        console.log(arr[r]);
+    }
+}
+// console.log(
+//     rotate90([
+//         [11, 12, 13, 14],
+//         [21, 22, 23, 24],
+//         [31, 32, 33, 34],
+//         [41, 42, 43, 44],
+//     ])
+// );
+/*
+- init a result array with the specified columns and rows
+- init an newArr to an empty array
+// transverse the outer ring of the array and add the values to a new array
+// rotate the new array
+// transverse result and add values from new array 
+*/
+
+// console.log(
+//     ringRotate([
+//         [11, 12, 13, 14, 15, 16, 17],
+//         [21, 22, 23, 24, 25, 46, 27],
+//         [31, 32, 33, 34, 35, 36, 37],
+//         [41, 42, 43, 44, 45, 46, 47],
+//         [51, 52, 53, 54, 55, 56, 57],
+//         [61, 62, 63, 64, 65, 66, 67],
+//     ])
+// );
+
+/*
+r, c
+first interation 0
+0, 0 iteration 0
+1, 1 iteration 1
+2, 2 iteration 2
+3, 3 iteration 3
+second iteration 1
+0, 1 iteration 0
+1, 2 iteration 1
+2, 3 iteration 2
+third iteration 2
+0, 2 iteration 0
+1, 3 iteration 1
+fourth iteration 3
+0, 3 iteration 0
+init lCol to 0
+inti 1Row  to 0
+- iterate through the col starting lCol, increment by 1 if less than input length
+    - iteration though the row starting at lRow, increment by 1 if less than dLength
+        - print the value at row and row + col
+    - decrement lRow by 1 
+    - increment lCol by 1
+*/
+// function stateOfWakanda2(arr) {
+//     let lCol = 0;
+//     let lRow = arr.length;
+//     for (let col = lCol; col < arr.length; col += 1) {
+//         for (let row = 0; row < lRow; row += 1) {
+//             console.log(row, row + col);
+//             console.log(arr[row][row + col]);
+//         }
+//         lRow -= 1;
+//         lCol += 1;
+//     }
+// }
+
+// console.log(
+//     stateOfWakanda2([
+//         [11, 12, 13, 14],
+//         [21, 22, 23, 24],
+//         [31, 32, 33, 34],
+//         [41, 42, 43, 44],
+//     ])
+// );
